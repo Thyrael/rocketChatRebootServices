@@ -37,10 +37,7 @@ service mongod start &
 # mongod process
 
 MONGODB_PID="$(pgrep mongod)"
-#if [ -z "$MONGODB_PID" ]; then
-#  echo 'An error occured when starting mongodb services' >> rebootRocketChatLog.txt
-#  exit 1
-#fi
+
 
 wait $MONGODB_PID
 echo 'Mongodb services successfully rebooted.' >> rebootRocketChatLog.txt
@@ -48,10 +45,7 @@ service rocketchat start &
 # rocketchat process
 
 ROCKETCHAT_PID="$(ps -ax | grep -v grep | grep Rocket.Chat | awk '{print $1}')"
-#if [ -z "$ROCKETCHAT_PID" ]; then
-#  echo 'An error occured when starting rocketchat services' >> rebootRocketChatLog.txt
-#  exit 1
-#fi
+
 echo 'Rocketchat services successfully rebooted.' >> rebootRocketChatLog.txt
 
 echo 'Reboot successfully teminated.' >> rebootRocketChatLog.txt
